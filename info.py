@@ -43,7 +43,21 @@ P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
 SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "False")), False)
 CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", None)
-IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "<b>🎞 Title</b>: {title}\n<b>🎭 Genres</b>: {genres}\n<b>📆 Release Info</b> : {release_date}\n<b>🌟 Rating</b>: {rating}/ 10\n\n<b>☀️ Languages</b> : {languages}\n<b>👥 Cast</b> : {cast}\n<b>🎥Director</b> : {director}\n\n<b>🗒Storyline</b>: {plot}")
+IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", """📀 𝖳𝗂𝗍𝗅𝖾 : <b>{title}</b>
+                            
+🌟 𝖱𝖺𝗍𝗂𝗇𝗀 : <b>{rating}/10</b>
+📆 𝖱𝖾𝗅𝖾𝖺𝗌𝖾 : <b>{release_date}</b>
+🎭 𝖦𝖾𝗇𝗋𝖾 : <b>{genre}</b>
+
+🗳️ 𝖵𝗈𝗍𝖾𝗌 : <b>{votes}</b>
+🎙 𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾 : <b>{languages}</b>
+🌐 𝖢𝗈𝗎𝗇𝗍𝗋𝗒 : <b>{countries}</b>
+
+🎥 𝖣𝗂𝗋𝖾𝖼𝗍𝗈𝗋𝗌 : <b>{director}</b>
+📝 𝖶𝗋𝗂𝗍𝖾𝗋𝗌 : <b>{writer}</b>
+🔆 𝖲𝗍𝖺𝗋𝗌 : <b>{cast}</b>
+
+🗒<b>Storyline</b>: <code>{plot}</code>""")
 LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False"), False)
 SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), True)
 MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
