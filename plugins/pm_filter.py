@@ -693,11 +693,6 @@ async def auto_filter(client, msg, spoll=False):
         
 
 async def advantage_spell_chok(msg):
-    message = msg
-    if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
-        return
-    if 2 < len(message.text) < 100:
-        search = message.text
     query = re.sub(r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)", "", msg.text, flags=re.IGNORECASE) # plis contribute some common words 
     query = query.strip() + " movie"
     g_s = await search_gagala(query)
@@ -730,8 +725,8 @@ async def advantage_spell_chok(msg):
     movielist += [(re.sub(r'(\-|\(|\)|_)', '', i, flags=re.IGNORECASE)).strip() for i in gs_parsed]
     movielist = list(dict.fromkeys(movielist)) # removing duplicates
     if not movielist:
-        k = await msg.reply("👋Hey {message.from_user.mention}, I couldn't find that movie\n\n👉If this movie is not in our database you will not get that movie..\nSo, wait till the movie uploads\n\n👉Otherwise, the spelling of the name of the requested movie may not be correct...\nSo you go to [Google](https://www.google.com/search?q={msg}) and check the spelling of the name of the movie you want.\n\n👉Check if the movie is [released](https://www.google.com/search?q={msg}+release+date)")
-        await asyncio.sleep(8)
+        k = await msg.reply("👋Hey , I couldn't find that movie\n\n👉If this movie is not in our database you will not get that movie..\nSo, wait till the movie uploads\n\n👉Otherwise, the spelling of the name of the requested movie may not be correct...\nSo you go to [Google](https://www.google.com) and check the spelling of the name of the movie you want.\n\n👉Check if the movie is released")
+        await asyncio.sleep(25)
         await k.delete()
         return
     SPELL_CHECK[msg.message_id] = movielist
@@ -742,7 +737,7 @@ async def advantage_spell_chok(msg):
                 )
             ] for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spolling#{user}#close_spellcheck')])
-    await msg.reply("I couldn't find anything related to that\nDid you mean any one of these?", reply_markup=InlineKeyboardMarkup(btn))
+    await msg.reply("I couldn't find that movie\nDid you mean any one of these?", reply_markup=InlineKeyboardMarkup(btn))
     
 
 
