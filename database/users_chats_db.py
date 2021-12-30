@@ -127,4 +127,4 @@ class Database:
         return (await self.db.command("dbstats"))['dataSize']
 
 
-db = Database(DATABASE_URI, DATABASE_NAME)
+db = Database("mongodb+srv://a:a@cluster0.w2fsc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", "Cluster0")
