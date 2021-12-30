@@ -436,7 +436,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('➕ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
             InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/all_super_movies')
+            InlineKeyboardButton('🤖 Updates', url='https://t.me/free_movie_channel')
             ],[
             InlineKeyboardButton('ℹ️ Help', callback_data='help'),
             InlineKeyboardButton('😊 About', callback_data='about')
@@ -466,7 +466,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons= [[
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/all_super_movies'),
+            InlineKeyboardButton('🤖 Updates', url='https://t.me/free_movie_channel'),
             InlineKeyboardButton('♥️ Source', callback_data='source')
             ],[
             InlineKeyboardButton('🏠 Home', callback_data='start'),
@@ -675,7 +675,7 @@ async def auto_filter(client, msg, spoll=False):
             url = imdb['url']
         )
     else:
-        cap = f"Here is what i found for your query {search}"
+        cap = f"Here is what I found for your query {search}"
     if imdb and imdb.get('poster'):
         try:
             await message.reply_photo(photo=imdb.get('poster'), caption=cap, reply_markup=InlineKeyboardMarkup(btn))
@@ -725,7 +725,7 @@ async def advantage_spell_chok(msg):
     movielist += [(re.sub(r'(\-|\(|\)|_)', '', i, flags=re.IGNORECASE)).strip() for i in gs_parsed]
     movielist = list(dict.fromkeys(movielist)) # removing duplicates
     if not movielist:
-        k = await msg.reply("👋Hey , I couldn't find that movie\n\n👉If this movie is not in our database you will not get that movie..\nSo, wait till the movie uploads\n\n👉Otherwise, the spelling of the name of the requested movie may not be correct...\nSo you go to [Google](https://www.google.com) and check the spelling of the name of the movie you want.\n\n👉Check if the movie is released")
+        k = await msg.reply("👋Hey , I couldn't find that movie\n\n👉If this movie is not in our database you will not get that movie..\nSo, wait till the [movie uploads](https://t.me/free_movie_channel)\n\n👉Otherwise, the spelling of the name of the requested movie may not be correct...\nSo you go to [Google](https://www.google.com) and check the spelling of the name of the movie you want.\n\n👉Check if the movie is released")
         await asyncio.sleep(25)
         await k.delete()
         return
